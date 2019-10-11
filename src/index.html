@@ -7,8 +7,40 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script>
+    (function($) {
+  "use strict"; // Start of use strict
+
+  // Smooth scrolling using jQuery easing
+  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: (target.offset().top - 56)
+        }, 1000, "easeInOutExpo");
+        return false;
+      }
+    }
+  });
+
+  // Closes responsive menu when a scroll trigger link is clicked
+  $('.js-scroll-trigger').click(function() {
+    $('.navbar-collapse').collapse('hide');
+  });
+
+  // Activate scrollspy to add active class to navbar items on scroll
+  $('body').scrollspy({
+    target: '#mainNav',
+    offset: 56
+  });
+
+})(jQuery
+  </script>
+
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 <nav class="navbar navbar-inverse fixed-top">
   <div class="container-fluid">
@@ -26,13 +58,13 @@
 
       <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
-        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link js-scroll-trigger" href="#about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#contact">Services</a>
+        <a class="nav-link js-scroll-trigger" href="#service">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
       </li>      
     </ul>
     </div>
@@ -63,7 +95,7 @@
   </div>
 </section> 
 
-<section id="contact">
+<section id="service">
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
